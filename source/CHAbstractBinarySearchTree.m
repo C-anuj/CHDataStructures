@@ -151,7 +151,7 @@ static CHSearchTreeHeaderObject *headerObject = nil;
      traversalOrder:(CHTraversalOrder)order
     mutationPointer:(unsigned long*)mutations
 {
-	if ((self = [super init]) == nil || !isValidTraversalOrder(order)) return nil;
+	if (!isValidTraversalOrder(order) || (self = [super init]) == nil) return nil;
 	traversalOrder = order;
 	searchTree = (root != sentinel) ? [tree retain] : nil;
 	if (traversalOrder == CHTraverseLevelOrder) {
